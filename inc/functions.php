@@ -31,7 +31,7 @@ function sendMessage($message, array $bot, $channel)
         
         //close connection
         curl_close($ch);
-}
+}//sendMessage
 
 function parseExecutionTime($msgText)
 {
@@ -64,7 +64,7 @@ function parseExecutionTime($msgText)
 		}
 		
 		return $task_execution_time;
-}
+}//parseExecutionTime
 
 function makeTimePrintable($task_execution_time)
 {
@@ -75,7 +75,7 @@ function makeTimePrintable($task_execution_time)
 	}
 	
 	return $printable_time;
-}
+}//makeTimePrintable
 
 function createTasks($action, $task_execution_time)
 {
@@ -97,7 +97,7 @@ function createTasks($action, $task_execution_time)
 	}
 	
 	return $total_tasks;
-}
+}//createTasks
 
 function createTasks($action, $task_execution_time)
 {
@@ -119,7 +119,7 @@ function createTasks($action, $task_execution_time)
 	}
 	
 	return $total_tasks;
-}
+}//createTasks
 
 function respondIfNoServerSpecified($total_tasks_created)
 {
@@ -129,7 +129,7 @@ function respondIfNoServerSpecified($total_tasks_created)
 	if ($total_tasks_created == 0){
 		sendMessage(response_no_server_specified(), $bots[2], $channelName);
 	}
-}
+}//respondIfNoServerSpecified
 
 function containsArray($str, array $arr)
 {
@@ -137,7 +137,7 @@ function containsArray($str, array $arr)
         if (stripos($str,$a) !== false) return true;
     }
     return false;
-}
+}//containsArray
 
 function containsArrayID($str, array $arr)
 {
@@ -145,7 +145,7 @@ function containsArrayID($str, array $arr)
         if (stripos($str,$a[0]) !== false) return true;
     }
     return false;
-}
+}//containsArrayID
 
 function contains($str, $word)
 {
@@ -154,4 +154,40 @@ function contains($str, $word)
     }else{
 	    return false;
 	}
-}
+}//contains
+
+function is_empty_dir($dir) {
+    if (!is_readable($dir)) return NULL; 
+        $handle = opendir($dir);
+        while (false !== ($entry = readdir($handle))) {
+            if ($entry != "." && $entry != "..") {
+                return FALSE;
+            }
+        }
+    return TRUE;
+}//is_empty_dir
+
+function get_extension($file_path)
+{
+    $path = pathinfo($file_path);
+    return $path['extension'];
+}//get_extension
+
+function get_first_file($dir) {
+    $h = opendir($dir); //Open the directory
+    while (false !== ($entry = readdir($h))) {
+        if($entry != '.' && $entry != '..') { //Skips over . and ..
+            return $entry; //Return the file
+        }
+    }
+}//get_first_file
+
+function is_acceptable_image_file($file_path)
+{
+    $ext = get_extension($result);
+    if($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "gif")
+    {
+        return true;
+    }
+    return false;
+}//is_acceptable_image_file
