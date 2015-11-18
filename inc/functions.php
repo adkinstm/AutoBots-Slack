@@ -160,7 +160,7 @@ function is_empty_dir($dir) {
     if (!is_readable($dir)) return NULL; 
         $handle = opendir($dir);
         while (false !== ($entry = readdir($handle))) {
-            if ($entry != "." && $entry != "..") {
+            if ($entry != '.' && $entry != '..' && $entry != '.keep') {
                 return FALSE;
             }
         }
@@ -176,7 +176,7 @@ function get_extension($file_path)
 function get_first_file($dir) {
     $h = opendir($dir); //Open the directory
     while (false !== ($entry = readdir($h))) {
-        if($entry != '.' && $entry != '..') { //Skips over . and ..
+        if($entry != '.' && $entry != '..' && $entry != '.keep') { //Skips over . and .. and .keep
             return $entry; //Return the file
         }
     }
