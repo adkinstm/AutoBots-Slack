@@ -30,6 +30,8 @@ $password = "MYSQL PASSWORD";
 $database = "MYSQL DATABASE";
 ```
 
+####Custom Bot Avatar
+To use a custom profile image for your bot integration, add a square JPEG, PNG, or GIF image to `/static/custom-avatar/`.  The first file in the directory will be used as the Bot's avatar, so no reason to put multiple images in here.
 
 ## License
 The MIT License (MIT)
