@@ -2,7 +2,6 @@
 
     /****   MAIN INDEX FILE (In General Customization Should Not Take Place In This File)    ****/
     include_once "inc/config.php";
-    include_once "inc/response_builder.php";
 
     //TAD Bot Listener
     $responseDelay = 1; //Response delay in seconds
